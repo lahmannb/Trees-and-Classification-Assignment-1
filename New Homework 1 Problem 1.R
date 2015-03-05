@@ -15,13 +15,15 @@ summary(treefit)
 #treefit2
 treefit2 <- tree(log(MedianHouseValue) ~ Longitude + Latitude, data=x, mindev=0.001)
 plot(treefit2)
-text(treefit, cex=.75)
+text(treefit2, cex=.75)
 plot(x$Longitude,x$Latitude,col=grey(10:2/11)[cut.prices],pch=20,
      xlab="Longitude",ylab="Latitude")
 partition.tree(treefit2,ordvars=c("Longitude","Latitude"),add=TRUE,cex=0.3)
 summary(treefit2)
 #treefit3
 treefit3 <- tree(log(MedianHouseValue) ~., data=x)
+plot(treefit3)
+text(treefit3, cex=.75)
 plot(x$Longitude,x$Latitude,col=grey(10:2/11)[cut.prices],pch=20,
      xlab="Longitude",ylab="Latitude")
 cut.predictions = cut(predict(treefit3),log(price.deciles),include.lowest=TRUE)
